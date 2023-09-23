@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    .required {
+      color: red;
+    }
+    input[type=text] {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 0px;
+}
+  </style>
+</head>
+<body>
+    <div align="center">
+  <form id="contactForm" onsubmit="return validateForm()">
+    <br>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <span class="required" id="nameError">This field is required</span><br><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+    <span class="required" id="emailError">This valid email is required</span><br><br>
+
+    <label for="website">Website:</label>
+    <input type="text" id="website" name="website">
+    <span class="required" id="emailError">The valid url is required</span><br><br>
+
+
+    <label for="message">Message:</label>
+    <input type="text" id="message"  name="message" rows="4" required></textarea>
+    <span class="required" id="messageError">This field is required</span><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      let isValid = true;
+
+      if (name === "") {
+        document.getElementById("nameError").style.display = "inline";
+        isValid = false;
+      } else {
+        document.getElementById("nameError").style.display = "none";
+      }
+
+      if (email === "") {
+        document.getElementById("emailError").style.display = "inline";
+        isValid = false;
+      } else {
+        document.getElementById("emailError").style.display = "none";
+      }
+
+      if (message === "") {
+        document.getElementById("messageError").style.display = "inline";
+        isValid = false;
+      } else {
+        document.getElementById("messageError").style.display = "none";
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>
